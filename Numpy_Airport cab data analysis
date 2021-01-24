@@ -1,0 +1,28 @@
+# Question to be answer in this analysis
+Q1- Mean speed of the all rides
+Q2- Number of rides taken in Fabraury
+Q3-Number of rides where tip more than 50$
+Q4-Number of rides where drop was JFK airport
+CODE - 
+import numpy as np                                                  # import numpy library 
+taxi=np.genfromtxt('cab_data.csv',delimiter=',',skip_header=True)   # upload the file
+Q1- Mean speed of the all rides
+speed=taxi[:,7]/(taxi[:,8]/3600)                                    # first we have to find speed of all rides and I have converted trip length in hours by dividing it 3600
+print(speed)
+Output - [ 21.          20.57142857  18.85714286  36.          63.
+  77.2        133.2         50.53691275  64.53265045  69.96226415
+  82.7755102   66.4921993   72.54961832  50.31055901  29.50819672
+  28.67647059  31.19584055  36.02118893  53.52112676]
+mean_speed=speed.mean()                                             # we find the mean speed of all rides
+print(mean_speed)
+Output -52.94268995605422
+Q2- Number of rides taken in January
+rides_jan=taxi[taxi[:,1] ==1 , 1]       # variable name(taxi)[taxi[:,row_number] == 1(jan month), month column]
+print(rides_jan.shape[0])
+Output -19
+Q3-Number of rides where tip more than 50$
+print(taxi[taxi[:,9] >= 50, 9].shape[0])
+Output - 4
+Q4-Number of rides where drop was JFK airport
+print(taxi[taxi[:, 6] == 5, 6].shape[0])
+Output - 3
