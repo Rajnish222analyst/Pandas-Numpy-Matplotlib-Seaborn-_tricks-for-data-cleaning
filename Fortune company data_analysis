@@ -1,0 +1,10 @@
+company=pd.read_csv('Fortune_500.csv',encoding = "ISO-8859-1", engine='python')    # you can get this data from kaggle
+company.head()  
+sectors=company.groupby('Sector')   # Using group by function to seperate data sector wise
+sectors.first()            #  get first company of each sector
+sectors.last()             # get last company of each sector
+sectors.groups             # get all groups of company
+company.iloc[12,:]       # company.iloc[row number,entire column value] getting all information of a particular company
+sectors.sum()            # sum of all factor sector wise
+sectors.mean()           # average of all factor sector wise
+sectors['Revenues'].mean().sort_values(ascending=False)    # how to analyse single column
