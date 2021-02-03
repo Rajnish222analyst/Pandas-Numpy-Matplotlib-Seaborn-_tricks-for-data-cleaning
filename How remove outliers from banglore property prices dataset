@@ -1,0 +1,12 @@
+import pandas as pd
+df = pd.read_csv("bhp.csv")
+df.head
+df.shape
+df.describe()
+min_thresold, max_thresold = df.price_per_sqft.quantile([0.001, 0.999])
+min_thresold, max_thresold      # Explore samples that are above 99.90% percentile and below 1% percentile rank
+(1366.184, 50959.36200000099)
+df[df.price_per_sqft < min_thresold]
+df[df.price_per_sqft > max_thresold]
+df2 = df[(df.price_per_sqft<max_thresold) & (df.price_per_sqft>min_thresold)]
+df2.shape     # Remove outliers
